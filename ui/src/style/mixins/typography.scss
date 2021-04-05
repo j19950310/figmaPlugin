@@ -1,0 +1,82 @@
+$font-weight: (
+    light: 300,
+    normal: 400,
+    bold: 700
+);
+$font-family: (
+    default: #{'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif},
+    en: #{'Copperplate'}
+);
+
+@mixin typo($lv, $type) {
+    @if ($lv == 'display') {
+        @if ($type == 1) {
+            font-size: 52px;
+            font-weight: map-get($font-weight, light);
+            line-height: normal;
+            letter-spacing: 10.8px;
+        }
+        @else {
+            @error '#{$type}：沒有這個type';
+        }
+    }
+    @else if ($lv == 'heading') {
+        @if ($type == 1) {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.4375em;
+            @include media-breakpoint-down(desktop) {
+                font-size: 14px;
+            }
+        }
+        @else if ($type == 2) {
+            line-height: 1.6666666em;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        @else {
+            @error '#{$type}：沒有這個type';
+        }
+    }
+    @else if ($lv == 'body') {
+        @if ($type == 1) {
+            line-height: 1.4375em;
+            font-size: 14px;
+        }
+        @else if ($type == 2) {
+            line-height: 1.4375em;
+            font-size: 16px;
+        }
+        @else {
+        }
+    }
+    @else if ($lv == 'list') {
+        @if ($type == 1) {
+            font-size: 14px;
+            font-weight: map-get($font-weight, normal);
+            line-height: 2.14;
+            letter-spacing: 2.5px;
+        }
+        @else {
+            @error '#{$level}：沒有這個type';
+        }
+    }
+    @else if ($lv == 'button') {
+        @if ($type == 1) {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4375em;
+        }
+        @else if ($type == 2) {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4375em;
+        }
+        @else {
+            @error '#{$level}：沒有這個type';
+        }
+    }
+    @else {
+        @error '#{$level}：沒有這個level';
+    }
+}
