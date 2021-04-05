@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "ui compile",
   "scripts": {
-    "dev": "webpack serve --config webpack.config.js --mode=development",
-    "prod": "webpack --mode=production"
+    "dev": "webpack --watch --config webpack.config.dev.js",
+    "prod": "webpack --config webpack.config.prod.js"
   },
   "author": "Jay",
   "license": "",
