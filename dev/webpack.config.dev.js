@@ -8,6 +8,7 @@ module.exports = (env, argv) => ({
     devtool: 'inline-source-map',
     devServer: {
         contentBase: '../dist',
+        port: 8080,
         hot: true
     },
     entry: {
