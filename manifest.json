@@ -1,5 +1,5 @@
 {
-  "name": "FigmaPluginByVue",
+  "name": "Text Styles Replace",
   "id": "959681905525222133",
   "api": "1.0.0",
   "main": "./dist/figma.js",
