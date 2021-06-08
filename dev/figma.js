@@ -95,6 +95,6 @@ function setAllTextStyleId(node, id) {
 }
 
 function compareIsSameTextStyle(n1, n2) {
-    if(n1.textStyleId || n2.textStyleId) return false
+    // if(n1.textStyleId || n2.textStyleId) return false // figma BUG
     return stringifyFontProp(n1) === stringifyFontProp(n2)
 }
