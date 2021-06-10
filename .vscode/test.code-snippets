@@ -1,0 +1,27 @@
+{
+	// Place your devEnvironment workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+    "Typo Select": {
+        "scope": "scss, vue",
+        "prefix": "typo",
+        "body": [
+            "@include typo('${1|中文/內文,中文/備註,中文/標題一 L,中文/標題一 M,中文/標題一 S,中文/標題二 L,中文/標題二 M,中文/標題二 S,中文/標題三-L,中文/標題三 M,中文/標題四,中文/標題五,中文/標題六,English/heading 1 L,English/heading 1 M,English/heading 1 S,English/heading 2 L,English/heading 2 M,English/heading 2 S,English/heading 3 L,English/heading 3 M,English/heading 4,English/heading 5,English/heading 6,English/body,English/caption,English/display L,English/display M,English/display S|}');",
+        ],
+        "description": "與figma同步"
+    },
+    
+}

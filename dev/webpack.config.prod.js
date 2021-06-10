@@ -40,7 +40,8 @@ module.exports = (env, argv) => ({
         // extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '.json'],
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname, './src'),
         }
     },
 

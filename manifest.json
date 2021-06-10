@@ -1,7 +1,7 @@
 {
-  "name": "FigmaPluginByVue",
-  "id": "959681905525222133",
-  "api": "1.0.0",
-  "main": "./dist/figma.js",
-  "ui": "./dist/index.html"
-}
+    "name": "FE Typography",
+    "id": "984376908714839230",
+    "api": "1.0.0",
+    "main": "./dist/figma.js",
+    "ui": "./dist/index.html"
+  }
