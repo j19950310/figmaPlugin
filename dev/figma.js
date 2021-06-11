@@ -94,7 +94,7 @@ function selectAllHide() {
     const selections = [...figma.currentPage.selection]
     let targetSelect = []
     if (selections.length === 0) {
-        targetSelect = figma.currentPage.findAll(node => !node.visible)
+        targetSelect = figma.currentPage.findAll(node => (!node.visible))
     } else {
         function mapSearch(node) {
             if(!node.visible) {
