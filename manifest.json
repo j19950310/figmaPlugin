@@ -1,6 +1,6 @@
 {
-  "name": "FigmaPluginByVue",
-  "id": "959681905525222133",
+  "name": "Image Replace",
+  "id": "985080936903147981",
   "api": "1.0.0",
   "main": "./dist/figma.js",
   "ui": "./dist/index.html"
