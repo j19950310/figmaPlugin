@@ -9,10 +9,10 @@
                 {{ selectFontObj.characters }}
             </div>
             <div v-else class="selection-block-now">
-                請選擇一個字體單位
+                先選取畫面上的一個字體單位
             </div>
             <div v-if="selectFontObj && !selectFontObj.textStyleId" class="font-style-alert">
-                此字體尚未歸納TextStyle !
+                缺少TextStyle !
             </div>
             <div class="font-style-button__list">
                 <div 
@@ -145,8 +145,9 @@ export default {
         &-button {
             background-color: #ccc;
             border-radius: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             &.-active {
@@ -158,6 +159,10 @@ export default {
             }
             &__list {
                 padding: 20px;
+                margin: 0 -20px;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
             }
         }
         &-request {

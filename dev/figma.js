@@ -1,7 +1,7 @@
 
 // __html__ or __uiFiles__ 
 figma.showUI(__html__)
-figma.ui.resize(500, 500)
+figma.ui.resize(500, 900)
 figma.ui.onmessage = (message) => {
     const { title, content } = message
     const { id, textStyleId } = content
