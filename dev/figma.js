@@ -1,4 +1,5 @@
-const IMAGE = 'IMAGE' 
+const IMAGE = 'IMAGE'
+const INSTANCE = 'INSTANCE'
 const COMPONENT = 'COMPONENT'
 const COMPONENT_SET = 'COMPONENT_SET'
 const TEXT = 'TEXT'
@@ -16,6 +17,9 @@ const STAR = 'STAR'
 // console.log(figma.command);
 function init() {
     switch (figma.command) {
+        case INSTANCE:
+            selectAllNodeType(INSTANCE)
+        break
         case COMPONENT:
             selectAllNodeType(COMPONENT)
         break

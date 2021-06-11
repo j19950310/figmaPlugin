@@ -4,7 +4,8 @@
     "api": "1.0.0",
     "main": "./dist/figma.js",
     "menu": [
-        {"name": "組件", "command": "COMPONENT"},
+        {"name": "組件", "command": "INSTANCE"},
+        {"name": "原始組件", "command": "COMPONENT"},
         {"name": "群組組件", "command": "COMPONENT_SET"},
         {"name": "文字", "command": "TEXT"},
         {"name": "隱藏", "command": "HIDE"},
