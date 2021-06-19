@@ -1,15 +1,15 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+// merge config
+const { merge } = require('webpack-merge');
+const developmentConfig = require('./webpack.dev.config')
+const productionConfig = require('./webpack.prod.config')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
-module.exports = (env, argv) => ({
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: '../dist',
-        hot: true
-    },
+const commonConfig = {
     entry: {
         ui: './ui.js',
         figma: './figma.js'
@@ -17,7 +17,6 @@ module.exports = (env, argv) => ({
     resolveLoader: {
         modules: [path.join(__dirname, 'node_modules')]
     },
-
     module: {
         rules: [
             { test: /\.vue$/, loader: 'vue-loader', exclude: /node_modules/ },
@@ -40,7 +39,6 @@ module.exports = (env, argv) => ({
             { test: /\.(png|jpg|gif|webp|svg)$/, loader: [{ loader: 'url-loader' }] },
         ],
     },
-
     resolve: {
         // extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '.json'],
         extensions: ['.js', '.vue', '.json'],
@@ -48,12 +46,10 @@ module.exports = (env, argv) => ({
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
-
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',
@@ -64,7 +60,6 @@ module.exports = (env, argv) => ({
         new HtmlWebpackInlineSourcePlugin(),
         new VueLoaderPlugin()
     ],
-
     node: {
         setImmediate: false,
         dgram: 'empty',
@@ -73,4 +68,16 @@ module.exports = (env, argv) => ({
         tls: 'empty',
         child_process: 'empty'
     }
-});
+}
+
+module.exports =  (env, args) => {
+    console.log({env, args});
+    switch(args.mode) {
+        case 'development':
+            return merge(commonConfig, developmentConfig);
+        case 'production':
+            return merge(commonConfig, productionConfig);
+        default:
+            throw new Error('No matching configuration was found!');
+    }
+};
