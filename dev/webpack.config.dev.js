@@ -37,7 +37,7 @@ module.exports = (env, argv) => ({
                     }
                 ]
             },
-            { test: /\.(png|jpg|gif|webp|svg)$/, loader: [{ loader: 'url-loader' }] },
+            { test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader' },
         ],
     },
 
@@ -45,7 +45,8 @@ module.exports = (env, argv) => ({
         // extensions: ['.tsx', '.ts', '.jsx', '.js', '.vue', '.json'],
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname,'./src')
         }
     },
 
@@ -64,13 +65,4 @@ module.exports = (env, argv) => ({
         new HtmlWebpackInlineSourcePlugin(),
         new VueLoaderPlugin()
     ],
-
-    node: {
-        setImmediate: false,
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty'
-    }
 });
