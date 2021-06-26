@@ -1,0 +1,24 @@
+{
+    "name": "Layers Selector",
+    "id": "984767457546952043",
+    "api": "1.0.0",
+    "main": "./dist/figma.js",
+    "menu": [
+        {"name": "零組件", "command": "INSTANCE"},
+        {"name": "組件", "command": "COMPONENT"},
+        {"name": "群組組件", "command": "COMPONENT_SET"},
+        {"name": "文字", "command": "TEXT"},
+        {"name": "隱藏", "command": "HIDE"},
+        {"name": "含有圖片", "command": "IMAGE"},
+        {"name": "向量", "command": "VECTOR"},
+        {"name": "基本圖形",
+            "menu": [
+              {"name": "矩形", "command": "RECTANGLE"},
+              {"name": "三角形", "command": "POLYGON"},
+              {"name": "線段", "command": "LINE"},
+              {"name": "圓形", "command": "ELLIPSE"},
+              {"name": "星形", "command": "STAR"}
+            ]
+        }
+    ]
+}
