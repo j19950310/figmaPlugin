@@ -57,8 +57,8 @@ export function toSassFormat(obj) {
                 }
                 break
             case 'fontName':
-                sassObj[name]['font-family'] = value.family
-                sassObj[name]['font-family'] = FONT_WEIGHT[value.style]
+                sassObj[name]['font-family'] = `'${value.family}'`
+                sassObj[name]['font-weight'] = FONT_WEIGHT[value.style]
                 break
             case 'paragraphIndent':
                 sassObj[name]['text-indent'] = `${value}px`
