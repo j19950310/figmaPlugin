@@ -1,3 +1,5 @@
+const SHOW_UI = 'SHOW_UI'
+const MISSING_TYPO = 'MISSING_TYPO'
 const IMAGE = 'IMAGE'
 const INSTANCE = 'INSTANCE'
 const COMPONENT = 'COMPONENT'
@@ -11,12 +13,27 @@ const LINE = 'LINE'
 const ELLIPSE = 'ELLIPSE'
 const STAR = 'STAR'
 
+const uiOption = {
+    width: 120,
+    height: 500
+}
 // __html__ or __uiFiles__ 
 // figma.showUI(__html__) // 純Figma Code
 
 // console.log(figma.command);
 function init() {
-    switch (figma.command) {
+    commandHandler(figma.command)
+}
+
+function commandHandler(command) {
+    switch (command) {
+        case SHOW_UI: 
+            figma.showUI(__html__)
+            initUiListener()
+        break
+        case MISSING_TYPO: 
+            catchMissingTypoHandler()
+        break
         case INSTANCE:
             selectAllNodeType(INSTANCE)
         break
@@ -56,7 +73,10 @@ function init() {
         default:
         break;
     }
-    figma.closePlugin()
+
+    if (figma.command !== SHOW_UI) {
+        figma.closePlugin()
+    }
 }
 
 function select(arr) {
@@ -123,7 +143,6 @@ function searchSelectionsAllNodeType(type, selections) {
     const searchArr = [...selections]
     const targets = []
     function mapSearch(node) {
-        console.log(node.type === type);
         if(node.type === type) {
             targets.push(node)
         } else if (node.children) {
@@ -144,4 +163,26 @@ function hasImageFill(fills) {
     return !!fills.find(fill => fill.type === IMAGE)
 }
 
+function catchMissingTypoHandler() { // TODO
+    let selections = figma.currentPage.selection
+    const textStylesId = figma.getLocalTextStyles().map(style => style.id)
+    const missingStyleFonts = figma.currentPage.findAll(n => {
+        if(n.type !== "TEXT") return false
+        return !n.textStyleId | !textStylesId.includes(n.textStyleId)
+    })
+    if (selections.length === 0) {
+        targetSelect = figmaFindAllType(type)
+    } else {
+        targetSelect = searchSelectionsAllNodeType(type, selections)
+    }
+    select(targetSelect)
+    select(missingStyleFonts)
+}
+
 init()
+
+// -----UI------
+function initUiListener() {
+    figma.ui.on('message', commandHandler)
+    figma.ui.resize(uiOption.width, uiOption.height)
+}

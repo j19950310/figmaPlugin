@@ -3,7 +3,11 @@
     "id": "984767457546952043",
     "api": "1.0.0",
     "main": "./dist/figma.js",
+    "ui": "./dist/index.html",
     "menu": [
+        {"name": "開啟固定UI介面", "command": "SHOW_UI"},
+        { "separator": true },
+        {"name": "缺少字級", "command": "MISSING_TYPO"},
         {"name": "零組件", "command": "INSTANCE"},
         {"name": "組件", "command": "COMPONENT"},
         {"name": "群組組件", "command": "COMPONENT_SET"},
