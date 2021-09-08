@@ -51,7 +51,9 @@ export function toSassFormat(obj) {
             case 'lineHeight':
                 if(value.unit === 'PIXELS') {
                     const ratio = value.value / utilsObj[name]['font-size']
-                    sassObj[name]['line-height'] = +(ratio).toFixed(1)
+                    sassObj[name]['line-height'] = +(ratio).toFixed(2)
+                } else if(value.unit === 'PERCENT') {
+                    sassObj[name]['line-height'] = +(value.value/100).toFixed(2)
                 } else {
                     console.error('lineHeight沒發現過的單位',value.unit);
                 }
