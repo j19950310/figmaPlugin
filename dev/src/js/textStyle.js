@@ -54,10 +54,22 @@ export function toSassFormat(obj) {
                     sassObj[name]['line-height'] = +(ratio).toFixed(2)
                 } else if(value.unit === 'PERCENT') {
                     sassObj[name]['line-height'] = +(value.value/100).toFixed(2)
+                } else if ( value.unit === 'AUTO') {
+                    sassObj[name]['line-height'] = 'auto'
                 } else {
-                    console.error('lineHeight沒發現過的單位',value.unit);
+                    console.error('lineHeight沒發現過的單位', value.unit);
                 }
                 break
+            case 'letterSpacing':
+                if(value.unit === 'PIXELS') {
+                    sassObj[name]['letter-spacing'] = `${value.value}px`
+                } else if(value.unit === 'PERCENT') {
+                    sassObj[name]['letter-spacing'] = `${value.value/100}em`
+                } else if ( value.unit === 'AUTO') {
+                    sassObj[name]['letter-spacing'] = 'auto'
+                } else {
+                    console.error('letterSpacing沒發現過的單位', value.unit);
+                }
             case 'fontName':
                 sassObj[name]['font-family'] = `'${value.family}'`
                 sassObj[name]['font-weight'] = FONT_WEIGHT[value.style]
